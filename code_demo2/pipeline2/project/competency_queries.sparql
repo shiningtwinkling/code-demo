@@ -1,0 +1,99 @@
+# IMPORTANT:
+# Run one query block at a time in tools that support only a single SPARQL query per execution.
+
+# === CQ1: Which high-risk AI systems exist and which obligations apply to them? ===
+PREFIX euaia: <http://example.org/eu-ai-act#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?system ?systemLabel ?obligation ?obligationLabel ?article
+WHERE {
+  ?system a euaia:High_Risk_AI_System ;
+          rdfs:label ?systemLabel ;
+          euaia:subject_to_obligation ?obligation .
+  ?obligation a euaia:Obligation ;
+              rdfs:label ?obligationLabel ;
+              euaia:articleReference ?article .
+}
+ORDER BY ?system ?obligation
+
+
+# === CQ2: Which actors are subject to which obligations? ===
+PREFIX euaia: <http://example.org/eu-ai-act#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?actor ?actorLabel ?actorType ?obligationLabel
+WHERE {
+  VALUES ?actorType {
+    euaia:Provider
+    euaia:Deployer
+    euaia:Distributor
+    euaia:Importer
+    euaia:Authority
+  }
+  ?actor a ?actorType ;
+         rdfs:label ?actorLabel ;
+         euaia:subject_to_obligation ?obligation .
+  ?obligation a euaia:Obligation ;
+              rdfs:label ?obligationLabel .
+}
+ORDER BY ?actor ?obligationLabel
+
+
+# === CQ3: Which prohibited AI practices are represented? ===
+PREFIX euaia: <http://example.org/eu-ai-act#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?practice ?label ?obligationLabel
+WHERE {
+  ?practice a euaia:Prohibited_AI_Practice ;
+            rdfs:label ?label ;
+            euaia:subject_to_obligation ?obligation .
+  ?obligation a euaia:Obligation ;
+              rdfs:label ?obligationLabel .
+}
+ORDER BY ?practice
+
+
+# === CQ4: Which governance entities regulate systems or govern actors? ===
+PREFIX euaia: <http://example.org/eu-ai-act#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?governance ?governanceLabel ?relation ?target
+WHERE {
+  VALUES ?governanceType {
+    euaia:AI_Regulatory_Sandbox
+    euaia:AI_Office
+    euaia:European_AI_Board
+    euaia:Advisory_Forum
+    euaia:Scientific_Panel
+    euaia:National_Competent_Authority
+    euaia:EU_Database
+  }
+  {
+    ?governance a ?governanceType ;
+                rdfs:label ?governanceLabel ;
+                euaia:regulates ?target .
+    BIND("regulates" AS ?relation)
+  }
+  UNION
+  {
+    ?governance a ?governanceType ;
+                rdfs:label ?governanceLabel ;
+                euaia:governs ?target .
+    BIND("governs" AS ?relation)
+  }
+}
+ORDER BY ?governance ?relation ?target
+
+
+# === CQ5: Which GPAI models have systemic-risk obligations and who provides them? ===
+PREFIX euaia: <http://example.org/eu-ai-act#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?model ?modelLabel ?provider ?providerLabel ?obligationLabel
+WHERE {
+  ?model a euaia:General_Purpose_AI_Model ;
+         rdfs:label ?modelLabel ;
+         euaia:subject_to_obligation ?obligation .
+  ?obligation a euaia:GPAI_Systemic_Risk_Obligation ;
+              rdfs:label ?obligationLabel .
+  ?provider a euaia:Provider ;
+            rdfs:label ?providerLabel ;
+            euaia:provides ?model .
+}
+ORDER BY ?model

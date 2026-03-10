@@ -1,0 +1,114 @@
+@prefix euaia: <http://example.org/eu-ai-act#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Ensure core ontology classes include minimal legal annotations.
+euaia:CoreClassMetadataShape a sh:NodeShape ;
+    sh:targetNode euaia:AI_System, euaia:Actor, euaia:Obligation, euaia:Governance,
+        euaia:Prohibited_AI_Practice, euaia:High_Risk_AI_System, euaia:Certain_AI_System, euaia:General_Purpose_AI_Model,
+        euaia:Provider, euaia:Deployer, euaia:Distributor, euaia:Importer, euaia:Authority,
+        euaia:Prohibition_Obligation, euaia:Risk_Management_Obligation, euaia:Data_Governance_Obligation,
+        euaia:Technical_Documentation_Obligation, euaia:Record_Keeping_Obligation, euaia:Transparency_Obligation,
+        euaia:Human_Oversight_Obligation, euaia:Accuracy_Robustness_Cybersecurity_Obligation,
+        euaia:Provider_Obligation, euaia:Deployer_Obligation, euaia:Authority_Cooperation_Obligation,
+        euaia:Fundamental_Rights_Impact_Assessment_Obligation, euaia:GPAI_Provider_Obligation,
+        euaia:GPAI_Systemic_Risk_Obligation, euaia:AI_Regulatory_Sandbox, euaia:AI_Office,
+        euaia:European_AI_Board, euaia:Advisory_Forum, euaia:Scientific_Panel,
+        euaia:National_Competent_Authority, euaia:EU_Database ;
+    sh:property [
+        sh:path rdfs:label ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path rdfs:comment ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path euaia:articleReference ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+    ] .
+
+# Every actor example should be linked to at least one legal duty.
+euaia:ActorObligationShape a sh:NodeShape ;
+    sh:targetClass euaia:Actor ;
+    sh:property [
+        sh:path euaia:subject_to_obligation ;
+        sh:minCount 1 ;
+        sh:class euaia:Obligation ;
+    ] .
+
+# High-risk AI systems should have obligations and governance links.
+euaia:HighRiskAISystemShape a sh:NodeShape ;
+    sh:targetClass euaia:High_Risk_AI_System ;
+    sh:property [
+        sh:path euaia:subject_to_obligation ;
+        sh:minCount 1 ;
+        sh:class euaia:Obligation ;
+    ] ;
+    sh:property [
+        sh:path euaia:regulated_by ;
+        sh:minCount 1 ;
+        sh:class euaia:Governance ;
+    ] .
+
+# Certain AI systems must have at least transparency obligations.
+euaia:CertainAISystemShape a sh:NodeShape ;
+    sh:targetClass euaia:Certain_AI_System ;
+    sh:property [
+        sh:path euaia:subject_to_obligation ;
+        sh:minCount 1 ;
+        sh:class euaia:Obligation ;
+    ] .
+
+# GPAI model examples should be governed and assigned duties.
+euaia:GPAIModelShape a sh:NodeShape ;
+    sh:targetClass euaia:General_Purpose_AI_Model ;
+    sh:property [
+        sh:path euaia:subject_to_obligation ;
+        sh:minCount 1 ;
+        sh:class euaia:Obligation ;
+    ] ;
+    sh:property [
+        sh:path euaia:regulated_by ;
+        sh:minCount 1 ;
+        sh:class euaia:Governance ;
+    ] .
+
+# Governance nodes should regulate systems or govern actors.
+euaia:GovernanceShape a sh:NodeShape ;
+    sh:targetClass euaia:Governance ;
+    sh:or (
+        [ sh:property [ sh:path euaia:regulates ; sh:minCount 1 ] ]
+        [ sh:property [ sh:path euaia:governs ; sh:minCount 1 ] ]
+    ) .
+
+# Obligation individuals should point to at least one covered actor/system.
+euaia:ObligationInstanceShape a sh:NodeShape ;
+    sh:targetClass euaia:Obligation ;
+    sh:property [
+        sh:path euaia:obligation_for ;
+        sh:minCount 1 ;
+    ] .
+
+# Every actor, AI system, and governance instance should carry at least one
+# operational legal relation (not only rdf:type/rdfs:label metadata).
+euaia:InstanceRelationShape a sh:NodeShape ;
+    sh:targetClass euaia:Actor ;
+    sh:targetClass euaia:AI_System ;
+    sh:targetClass euaia:Governance ;
+    sh:or (
+        [ sh:property [ sh:path euaia:subject_to_obligation ; sh:minCount 1 ] ]
+        [ sh:property [ sh:path euaia:provides ; sh:minCount 1 ] ]
+        [ sh:property [ sh:path euaia:deploys ; sh:minCount 1 ] ]
+        [ sh:property [ sh:path euaia:distributes ; sh:minCount 1 ] ]
+        [ sh:property [ sh:path euaia:imports ; sh:minCount 1 ] ]
+        [ sh:property [ sh:path euaia:regulates ; sh:minCount 1 ] ]
+        [ sh:property [ sh:path euaia:regulated_by ; sh:minCount 1 ] ]
+        [ sh:property [ sh:path euaia:governs ; sh:minCount 1 ] ]
+        [ sh:property [ sh:path euaia:governed_by ; sh:minCount 1 ] ]
+        [ sh:property [ sh:path euaia:participates_in_sandbox ; sh:minCount 1 ] ]
+    ) .

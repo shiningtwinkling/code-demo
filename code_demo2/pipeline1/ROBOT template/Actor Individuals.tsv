@@ -1,0 +1,9 @@
+ID	Label	Type	developsAI	deploysAI	importsAI	distributesAI	subjectToObligation	reportsToAuthority
+:VisionTech_Ltd	VisionTech Ltd	:Provider	:City_Face_Recognition_System					:Risk_Management_Requirement|:Transparency_Requirement	:German_Market_Surveillance_Authority
+:EuroAI_Solutions	EuroAI Solutions	:Provider	:Customer_Service_Chatbot					
+:RetailBank_Group	RetailBank Group	:Deployer		:Customer_Service_Chatbot			:Transparency_Requirement
+:GlobalTech_Imports	GlobalTech Imports	:Importer			:Foundation_LLM_Model		
+:AI_Supply_Distributor	AI Supply Distributor	:Distributor				:City_Face_Recognition_System
+:AutoDrive_Tech	AutoDrive Technologies	:Provider	:Autonomous_Driving_AI			:Risk_Management_Requirement|:Technical_Documentation_Requirement|:Human_Oversight_Requirement	:German_Market_Surveillance_Authority
+:BioSecure_AI	BioSecure AI Ltd	:Provider	:Biometric_Identification_System			:Risk_Management_Requirement|:Conformity_Assessment_Requirement
+:CreativeGen_Labs	CreativeGen Labs	:Provider	:Content_Generation_Model			:Transparency_Requirement

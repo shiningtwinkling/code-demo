@@ -1,0 +1,13 @@
+ID	Label	Type	Domain	Range	Definition
+:developsAI	develops AI system	object property	:Actor	:AI_System	Indicates that an actor develops an AI system.
+:placesOnMarket	places AI system on market	object property	:Actor	:AI_System	Indicates that an actor places an AI system on the EU market.
+:deploysAI	deploys AI system	object property	:Actor	:AI_System	Indicates that an actor deploys or uses an AI system.
+:importsAI	imports AI system	object property	:Importer	:AI_System	Indicates that an importer imports an AI system.
+:distributesAI	distributes AI system	object property	:Distributor	:AI_System	Indicates that a distributor distributes an AI system.
+:subjectToObligation	subject to obligation	object property	:Actor	:Obligation	Indicates that an actor must comply with an obligation.
+:appliesToSystem	applies to system	object property	:Obligation	:AI_System	Indicates that an obligation applies to a category of AI system.
+:supervisesActor	supervises actor	object property	:Authority	:Actor	Indicates that an authority supervises an actor.
+:regulatesSystem	regulates system	object property	:Authority	:AI_System	Indicates that an authority regulates an AI system.
+:enforcesObligation	enforces obligation	object property	:Authority	:Obligation	Indicates that an authority enforces compliance with an obligation.
+:assessesConformityOf	assesses conformity of AI system	object property	:Notified_Body	:AI_System	Indicates that a notified body assesses conformity of an AI system.
+:reportsToAuthority	reports to authority	object property	:Actor	:Authority	Indicates that an actor reports to a regulatory authority.

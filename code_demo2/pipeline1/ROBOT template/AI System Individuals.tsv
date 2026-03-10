@@ -1,0 +1,9 @@
+ID	Label	Type
+:City_Face_Recognition_System	City Facial Recognition System	:High_Risk_AI_System
+:Autonomous_Driving_AI	Autonomous Driving AI System	:High_Risk_AI_System
+:Biometric_Identification_System	Biometric Identification System	:High_Risk_AI_System
+:Emotion_Detection_System	Emotion Detection AI System	:Certain_AI_System
+:Credit_Scoring_AI	AI Credit Scoring System	:High_Risk_AI_System
+:Content_Generation_Model	AI Content Generation Foundation Model	:General_Purpose_AI_Model
+:Foundation_LLM_Model	Foundation Large Language Model	:General_Purpose_AI_Model
+:Customer_Service_Chatbot	Customer Service AI Chatbot	:Certain_AI_System

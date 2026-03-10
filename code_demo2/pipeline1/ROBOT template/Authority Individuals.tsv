@@ -1,0 +1,7 @@
+ID	Label	Type	supervisesActor	regulatesSystem	enforcesObligation
+:EU_AI_Office_Instance	European AI Office	:AI_Office		:Foundation_LLM_Model|:Content_Generation_Model	:Risk_Management_Requirement
+:EU_AI_Board_Instance	European Artificial Intelligence Board	:European_AI_Board	:VisionTech_Ltd|:EuroAI_Solutions|:AutoDrive_Tech|:BioSecure_AI|:CreativeGen_Labs		
+:German_Market_Surveillance_Authority	German Market Surveillance Authority	:Market_Surveillance_Authority	:RetailBank_Group		:Transparency_Requirement
+:EU_Notified_Body_001	EU Notified Body 001	:Notified_Body		:City_Face_Recognition_System	:Conformity_Assessment_Requirement
+:French_Market_Surveillance_Authority	French Market Surveillance Authority	:Market_Surveillance_Authority	:AutoDrive_Tech|:AutoFleet_Operator	:Autonomous_Driving_AI	:Risk_Management_Requirement
+:Italian_National_AI_Authority	Italian National AI Authority	:National_Competent_Authority	:FinanceCorp_Bank|:BioSecure_AI		:Transparency_Requirement|:Human_Oversight_Requirement
