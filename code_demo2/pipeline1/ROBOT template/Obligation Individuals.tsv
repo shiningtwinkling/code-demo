@@ -1,8 +1,0 @@
-ID	Label	Type	appliesToSystem
-:Risk_Management_Requirement	Risk Management Requirement	:Risk_Management_Obligation	:High_Risk_AI_System
-:Transparency_Requirement	Transparency Requirement	:Transparency_Obligation	:Certain_AI_System
-:Human_Oversight_Requirement	Human Oversight Requirement	:Human_Oversight_Obligation	:High_Risk_AI_System
-:Conformity_Assessment_Requirement	Conformity Assessment Requirement	:Conformity_Assessment_Obligation	:High_Risk_AI_System
-:Technical_Documentation_Requirement	Technical Documentation Requirement	:Technical_Documentation_Obligation	:High_Risk_AI_System
-:Post_Market_Monitoring_Requirement	Post Market Monitoring Requirement	:Post_Market_Monitoring_Obligation	:High_Risk_AI_System
-:AI_Literacy_Requirement	AI Literacy Requirement	:AI_Literacy_Obligation	
